@@ -3,3 +3,19 @@
 @tailwind utilities;
 @iconify/tailwind;
 
+td > svg {
+    margin: auto;
+    scale: 1.5;
+    color: #475569;
+}
+td, th {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+
+    border-bottom: 1px solid #ddd;
+}
+tr:nth-child(1) {
+    font: bold;
+}
