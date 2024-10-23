@@ -1,86 +1,11 @@
-import { Header } from "../../components/Header"
-import React, {useState, useEffect, useRef} from 'react'
+import { Header } from "../../components/saude/Header"
+import React from 'react'
 
 export function CentroClinico() {
-    const [isHeroVisible, setIsHeroVisible] = useState(true); // Estado que controla a visibilidade da Hero
-    const heroRef = useRef(null);
-
-    useEffect(() => {
-        const observerOptions = {
-            root: null, // Observa dentro da viewport
-            rootMargin: '0px',
-            threshold: 0, // Aciona quando qualquer parte está fora
-        };
-    
-        const observerCallback = (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setIsHeroVisible(true); // Hero está visível
-                } else {
-                    setIsHeroVisible(false); // Hero não está visível
-                }
-            });
-        };
-    
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-        if (heroRef.current) {
-            observer.observe(heroRef.current);
-        }
-    
-        return () => {
-            if (heroRef.current) {
-                observer.unobserve(heroRef.current);
-            }
-        };
-    }, []);
     
     return(
         <>
-        <header className={`fixed top-0 left-0 w-full transition-colors duration-300 ${
-                    isHeroVisible ? 'bg-transparent text-slate-50 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)]' : 'bg-white shadow-md text-slate-800'
-                    } z-50 `}>
-                <div className="container flex justify-between px-16 py-4 items-center w-full">
-                    <div>
-                        <h1 className="flex text-2xl font-extralight">PLANO<span className="font-bold text-violet-800">COSTA</span></h1>
-                    </div>
-                    <nav className="flex gap-6 items-center">
-
-                    <div className="group relative cursor-pointer py-2">
-
-                    <div className="flex items-center">
-                        <a className="menu-hover text-base font-normal lg:mx-3">
-                            Saúde
-                        </a>
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
-                                stroke="currentColor" className="h-4 w-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                            </svg>
-                        </span>
-                    </div>
-
-                        <div className="invisible absolute z-50 flex w-fit text-left flex-col bg-slate-50 py-1 pt-6 shadow-xl text-slate-700 group-hover:visible ">
-                            <a href="/saude/plano" className="my-2 block border-b border-gray-100 py-1 font-normal hover:brightness-150 md:mx-2">
-                                Plano Costa
-                            </a>
-
-                            <a href="/saude/centroclinico" className="my-2 block border-b border-gray-100 py-1 font-normal hover:brightness-150 md:mx-2">
-                                Centro Clínico
-                            </a>
-
-                            <a href="/saude/ambulancias" className="my-2 block border-b border-gray-100 py-1 font-normal hover:brightness-150 md:mx-2">
-                                Costa Ambulâncias
-                            </a>
-
-                        </div>
-                    </div>
-
-                        <a href="#contact" className="hover:brightness-150">Emergência</a>
-                        <a href="#info" className="hover:brightness-150">Saiba mais</a>
-                        <a href="#contact" className="hover:brightness-150">Contato</a>
-                    </nav>
-                </div>
-        </header>
+        <Header />
         <main>
             <div ref={heroRef}>
                 <section className="bg-[url('/images/medic.jpg')] bg-fixed saturate-100 w-vw h-dvh flex flex-col gap-12 justify-center items-center py-32 md:p-60 md:px-40 bg-cover text-center" >

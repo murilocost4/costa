@@ -7,97 +7,30 @@ import { IoDiamond } from "react-icons/io5";
 import { RiMentalHealthLine } from "react-icons/ri";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaWhatsapp, FaInstagram, FaFacebookSquare } from "react-icons/fa";
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
+import { Header } from "../../components/saude/Header";
+import { Depoimento } from "../../components/Depoimento";
+import Logo from '/images/planocosta.jpg'
 
 
 export function Plano() {
-    const [isHeroVisible, setIsHeroVisible] = useState(true); // Estado que controla a visibilidade da Hero
-    const heroRef = useRef(null);
-
-    useEffect(() => {
-        const observerOptions = {
-            root: null, // Observa dentro da viewport
-            rootMargin: '0px',
-            threshold: 0, // Aciona quando qualquer parte está fora
-        };
-    
-        const observerCallback = (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setIsHeroVisible(true); // Hero está visível
-                } else {
-                    setIsHeroVisible(false); // Hero não está visível
-                }
-            });
-        };
-    
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-        if (heroRef.current) {
-            observer.observe(heroRef.current);
-        }
-    
-        return () => {
-            if (heroRef.current) {
-                observer.unobserve(heroRef.current);
-            }
-        };
-    }, []);
 
     return(
         <div className="relative">
 
-            <header className={`fixed top-0 left-0 w-full transition-colors duration-300 ${
-                    isHeroVisible ? 'bg-transparent text-slate-50 drop-shadow-[0_1.2px_1.2px_rgba(20,0,0,0.5)]' : 'bg-white shadow-md text-slate-800'
-                    } z-50 `}>
-                <div className="container flex justify-between px-16 py-4 items-center w-full">
-                    <div>
-                        <h1 className="flex text-2xl font-extralight">PLANO<span className="font-bold text-violet-800">COSTA</span></h1>
-                    </div>
-                    <nav className="flex gap-6 items-center">
-
-                    <div className="group relative cursor-pointer py-2">
-
-                    <div className="flex items-center">
-                        <a className="menu-hover text-base font-normal lg:mx-3">
-                            Saúde
-                        </a>
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
-                                stroke="currentColor" className="h-4 w-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                            </svg>
-                        </span>
-                    </div>
-
-                        <div className="invisible absolute z-50 flex w-fit text-left flex-col bg-slate-50 py-1 pt-6 shadow-xl text-slate-700 group-hover:visible ">
-                            <a href="/saude/plano" className="my-2 block border-b border-gray-100 py-1 font-normal hover:brightness-150 md:mx-2">
-                                Plano Costa
-                            </a>
-
-                            <a href="/saude/centroclinico" className="my-2 block border-b border-gray-100 py-1 font-normal hover:brightness-150 md:mx-2">
-                                Centro Clínico
-                            </a>
-
-                            <a href="/saude/ambulancias" className="my-2 block border-b border-gray-100 py-1 font-normal hover:brightness-150 md:mx-2">
-                                Costa Ambulâncias
-                            </a>
-
-                        </div>
-                    </div>
-
-                        <a href="#contact" className="hover:brightness-150">Emergência</a>
-                        <a href="#info" className="hover:brightness-150">Saiba mais</a>
-                        <a href="#contact" className="hover:brightness-150">Contato</a>
-                    </nav>
+            <Header>
+                <div className="flex flex-col text-center">
+                <h3 className="font-extralight text-2xl">PLANO<span className="font-bold text-violet-800">COSTA</span></h3>
+                <span className="text-xs font-normal text-slate-500">ASSISTÊNCIA FAMILIAR</span>
                 </div>
-            </header>
+            </Header>
 
             <main className="relative z-10">
-                <div ref={heroRef}>
-                    <section className="bg-[url('/images/medic.jpg')] bg-fixed saturate-100 w-vw h-fit flex flex-col gap-12 justify-center items-center py-32 md:p-60 bg-cover text-center" >
-                        <h1 className="text-4xl text-slate-50 font-bold md:text-6xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.3)]">Cuidando da sua saúde com excelência</h1>
-                        <span className="text-slate-100 text-lg drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.3)]">descrição breve</span>
-                        <a href="#info"><button className="text-blue hover:before:bg-redborder-red-500 relative overflow-hidden border border-white/60 bg-transparent backdrop-blur-sm px-4 py-3 text-white shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-white/20 hover:border-white/80 before:transition-all before:duration-500 hover:text-white hover:shadow-white/20 hover:before:left-0 hover:before:w-full m-auto"><span className="relative z-10">Conheça nossos planos</span></button></a>
+                <div>
+                    <section className="bg-slate-100 bg-fixed saturate-100 w-vw h-fit flex flex-col gap-12 justify-center items-center py-32 md:p-60 bg-cover text-center" >
+                        <h1 className="text-4xl text-slate-900 font-bold md:text-6xl md:w-2/3">Cuidando da sua <span className="text-violet-600">saúde</span> com excelência</h1>
+                        <span className="text-slate-600 text-lg">descrição breve</span>
+                        <a href="#info"><button className="text-blue hover:before:bg-redborder-red-500 relative overflow-hidden border border-slate-800 bg-transparent backdrop-blur-sm px-4 py-3 text-slate-800 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-violet-600 hover:border-violet-600 before:transition-all before:duration-500 hover:text-white hover:shadow-white/20 hover:before:left-0 hover:before:w-full m-auto"><span className="relative z-10">Conheça nossos planos</span></button></a>
                     </section>
                 </div>
                 <section className="flex flex-col md:flex-row justify-around items-baseline py-28 px-4 md:px-0 gap-16 md:gap-0 md:p-40 bg-white">
@@ -111,7 +44,7 @@ export function Plano() {
                     </div>
                 </section>
                 <section id="info" className="bg-slate-100 flex flex-col gap-14 justify-center items-center py-28 w-full">
-                    <span className="text-4xl font-semibold text-violet-800 text-center">Vantagens de ser Cliente do Plano Costa</span>
+                    <span className="text-4xl font-semibold text-slate-800 text-center">Vantagens de ser Cliente do Plano Costa</span>
                     <div className="flex flex-col md:flex-row w-fit h-fit items-center justify-center text-left gap-10 md:gap-20">
                         <img className="w-3/4 md:w-1/3 shadow-xl" src="/images/medic.jpg" alt="" />
                         <ul className="flex flex-col gap-4 text-left w-fit pl-4 md:pl-0">
@@ -130,7 +63,7 @@ export function Plano() {
                 <section className="bg-white flex flex-col items-center py-28 px-4 md:px-0 gap-16">
                     <div className="flex flex-col text-center">
                         <span className="text-4xl text-slate-800 font-semibold mb-6">Nossos Planos</span>
-                        <p className="text-slate-600 text-lg">Encontre o plano ideal para você e sua família. Oferecemos opções para todos os perfis e necessidades:</p>
+                        <p className="text-slate-600 text-lg">Encontre o plano ideal para você e sua <span className="text-violet-600">família</span>. Oferecemos opções para todos os perfis e <span className="text-violet-600">necessidades</span>:</p>
                     </div>
                     <div className="flex flex-col md:flex-row gap-16 md:gap-32 justify-center w-full">
                         <div className="flex flex-col w-4/5 md:w-1/5 m-auto md:m-0 bg-gradient-to-tr from-yellow-400 to-yellow-300 rounded-2xl p-5 gap-4 text-slate-50 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
@@ -186,8 +119,7 @@ export function Plano() {
                         </div>
                     </div>
                     <div className="flex gap-6">
-                        <a href="/saude/planodetails"><button className="text-blue hover:before:bg-redborder-red-500 relative overflow-hidden border border-none bg-violet-900 backdrop-blur-sm px-4 py-3 text-white shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-white/20 hover:border-white/80 before:transition-all before:duration-500 hover:text-white hover:shadow-white/20 hover:before:left-0 hover:before:w-full m-auto"><span className="relative z-10">Conheça nossos planos</span></button></a>
-                        <a href="https://api.whatsapp.com/send/?phone=555121294040&text&type=phone_number&app_absent=0"><button className="text-blue hover:before:bg-redborder-red-500 relative overflow-hidden border border-violet-700 bg-slate-100 backdrop-blur-sm px-4 py-3 text-violet-900 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-white hover:border-violet-500 before:transition-all before:duration-500 hover:text-violet-900 hover:shadow-white/20 hover:before:left-0 hover:before:w-full m-auto"><span className="relative z-10">Conheça nossos planos</span></button></a>
+                        <a href="/saude/planodetails"><button className="text-blue hover:before:bg-redborder-red-500 relative overflow-hidden border border-slate-800 bg-transparent backdrop-blur-sm px-4 py-3 text-slate-800 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-violet-600 hover:border-violet-600 before:transition-all before:duration-500 hover:text-white hover:shadow-white/20 hover:before:left-0 hover:before:w-full m-auto"><span className="relative z-10">Conheça nossos planos</span></button></a>
                     </div>
                 </section>
                 <section className="bg-slate-100 flex flex-col justify-center py-32 px-4 md:px-0 gap-16">
@@ -196,22 +128,22 @@ export function Plano() {
                         <p className="text-slate-600">Confira o que os nossos clientes falam sobre o <span className="text-violet-700">Plano Costa</span> e como transformamos a <span className="text-violet-700">Saúde</span> e <span className="text-violet-700">Segurança</span> de suas famílias.</p>
                     </div>
                     <div className="flex flex-col md:flex-row justify- items-center md:justify-around gap-12 md:gap-0">
-                        <div className="p-6 md:p-10 bg-slate-50 w-4/5 md:w-1/5 rounded-xl flex flex-col gap-3 text-center md:text-left shadow-md">
-                            <span className="text-slate-800 text-xl font-semibold">Fulano de Tal</span>
-                            <p className="text-slate-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit doloremque ea iusto eos. Magnam, debitis blanditiis eos voluptatum.</p>
-                        </div>
-                        <div className="p-6 md:p-10 bg-slate-50 w-4/5 md:w-1/5 rounded-xl flex flex-col gap-3 text-center md:text-left shadow-md">
-                            <span className="text-slate-800 text-xl font-semibold">Fulano de Tal</span>
-                            <p className="text-slate-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit doloremque ea iusto eos. Magnam, debitis blanditiis eos voluptatum.</p>
-                        </div>
-                        <div className="p-6 md:p-10 bg-slate-50 w-4/5 md:w-1/5 rounded-xl flex flex-col gap-3 text-center md:text-left shadow-md">
-                            <span className="text-slate-800 text-xl font-semibold">Fulano de Tal</span>
-                            <p className="text-slate-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit doloremque ea iusto eos. Magnam, debitis blanditiis eos voluptatum.</p>
-                        </div>
-                        <div className="p-6 md:p-10 bg-slate-50 w-4/5 md:w-1/5 rounded-xl flex flex-col gap-3 text-center md:text-left shadow-md">
-                            <span className="text-slate-800 text-xl font-semibold">Fulano de Tal</span>
-                            <p className="text-slate-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit doloremque ea iusto eos. Magnam, debitis blanditiis eos voluptatum.</p>
-                        </div>
+                        <Depoimento 
+                            name="Fulano de Tal"
+                            text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit doloremque ea iusto eos. Magnam, debitis blanditiis eos voluptatum."    
+                        />
+                        <Depoimento 
+                            name="Fulano de Tal"
+                            text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit doloremque ea iusto eos. Magnam, debitis blanditiis eos voluptatum."    
+                        />
+                        <Depoimento 
+                            name="Fulano de Tal"
+                            text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit doloremque ea iusto eos. Magnam, debitis blanditiis eos voluptatum."    
+                        />
+                        <Depoimento 
+                            name="Fulano de Tal"
+                            text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit doloremque ea iusto eos. Magnam, debitis blanditiis eos voluptatum."    
+                        />
                     </div>
                 </section>
                 <section className="text-center md:text-left flex flex-col py-32 px-4 md:p-40 gap-16 bg-white">
